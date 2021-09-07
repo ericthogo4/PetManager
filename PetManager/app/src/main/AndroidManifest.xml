@@ -14,12 +14,7 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-9006992158786970~2296858647"/>
-
-
-        <!--<meta-data-->
-            <!--android:name="com.google.android.gms.ads.APPLICATION_ID"-->
-            <!--android:value="ca-app-pub-9006992158786970~9929129284"/>-->
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
 
         <activity android:name=".ProfilesActivity"
             android:theme="@style/AppTheme">
