@@ -5,7 +5,7 @@ Pet Manager is an open source Android app developed by Eric Thogo. The source co
 
 The developer takes your privacy very seriously.
 
-The developer hereby states, to the best of his knowledge and belief, that he has not programmed this app to collect any personally identifiable information. All data (such as app profiles) created by you (the user) is stored on your device only, and can be deleted easily by clearing the app's data or uninstalling it.
+The developer hereby states, to the best of his knowledge and belief, that he has not programmed this app to collect any personally identifiable information. All data (such as pet profiles) created by you (the user) is stored on your device only, and can be deleted easily by clearing the app's data or uninstalling it.
 
 ### Permissions Requested in the App
 
