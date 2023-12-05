@@ -49,13 +49,13 @@ public class DetailActivity extends AppCompatActivity {
         TextView ageTvw = findViewById(R.id.age_tvw);
 
 
-        weightTvw.setText(String.valueOf(weight)+"Kgs");
+        weightTvw.setText(weight +getString(R.string.klgrms));
 
         if(gender==1){
-            genderTvw.setText("Female");
+            genderTvw.setText(R.string.fml);
         }
         else {
-            genderTvw.setText("Male");
+            genderTvw.setText(R.string.mle);
         }
 
         breedTvw.setText(breed);
@@ -69,7 +69,7 @@ public class DetailActivity extends AppCompatActivity {
 
         dobTvw.setText(longDob);
 
-        ageTvw.setText(String.valueOf(age)+"Yrs");
+        ageTvw.setText(age +getString(R.string.yrs));
 
         toolbar.setTitle(name);
         setSupportActionBar(toolbar);
@@ -85,44 +85,44 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private String getMonthInText(String dString){
-        String monthInText = "January";
+        String monthInText = getString(R.string.jan);
 
         switch (dString) {
             case "01":
-                monthInText = "January";
+                monthInText = getString(R.string.jan);
                 break;
             case "02":
-                monthInText = "February";
+                monthInText = getString(R.string.feb);
                 break;
             case "03":
-                monthInText = "March";
+                monthInText = getString(R.string.mrch);
                 break;
             case "04":
-                monthInText = "April";
+                monthInText = getString(R.string.aprl);
                 break;
             case "05":
-                monthInText = "May";
+                monthInText = getString(R.string.my);
                 break;
             case "06":
-                monthInText = "June";
+                monthInText = getString(R.string.jne);
                 break;
             case "07":
-                monthInText = "July";
+                monthInText = getString(R.string.jly);
                 break;
             case "08":
-                monthInText = "August";
+                monthInText = getString(R.string.agst);
                 break;
             case "09":
-                monthInText = "September";
+                monthInText = getString(R.string.sptmb);
                 break;
             case "10":
-                monthInText = "October";
+                monthInText = getString(R.string.oct);
                 break;
             case "11":
-                monthInText = "November";
+                monthInText = getString(R.string.nov);
                 break;
             case "12":
-                monthInText = "December";
+                monthInText = getString(R.string.dec);
                 break;
 
             default:

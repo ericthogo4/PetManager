@@ -1,5 +1,6 @@
 package com.pets.dog.cat.petmanager;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -8,8 +9,15 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.appcompat.app.AlertDialog;
@@ -47,7 +55,7 @@ import java.util.List;
 
 import static android.view.View.GONE;
 
-public class ProfilesActivity extends AppCompatActivity implements ProfileInterface,ActionMode.Callback {
+public class ProfilesActivity extends LaunchScreenActivity implements ProfileInterface,ActionMode.Callback {
 
     private List<Profile> profileList = new ArrayList<>();
     private RecyclerView profilesRecyclerView;
@@ -56,7 +64,7 @@ public class ProfilesActivity extends AppCompatActivity implements ProfileInterf
     private List<Integer> pASelectedPositions = new ArrayList<>();
     private ActionMode actionMode;
     private FloatingActionButton nPFloatingActionButton;
-    private int PICK_IMAGE_REQUEST = 1;
+    private final int PICK_IMAGE_REQUEST = 1;
     private ProfilesDatabaseAdapter profilesDatabaseAdapter;
     private LinearLayout profilesActivityESLL;
     private boolean isEditingPPU = false;
@@ -69,18 +77,27 @@ public class ProfilesActivity extends AppCompatActivity implements ProfileInterf
     protected Double currentAppVersion;
 
     private AdView pAAdView;
+    private static final int PERMISSIONS_REQUEST_R_E_S = 1;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        profilesDatabaseAdapter = new ProfilesDatabaseAdapter(this);
+        profilesDatabaseAdapter.open();
+        showAppropriateScreen();
+
         setContentView(R.layout.activity_profiles);
 
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
+            }
+        });
 
 
-        pAAdView = (AdView) findViewById(R.id.pa_ad_view);
-        AdRequest pAAdRequest = new AdRequest.Builder().build();
-        pAAdView.loadAd(pAAdRequest);
+
 
         updateAppLinearLayout = findViewById(R.id.update_app_linear_layout);
 
@@ -102,17 +119,23 @@ public class ProfilesActivity extends AppCompatActivity implements ProfileInterf
         Float elevation=0.0f;
         getSupportActionBar().setElevation(elevation);
 
+        pAAdView = (AdView) findViewById(R.id.pa_ad_view);
+        AdRequest pAAdRequest = new AdRequest.Builder().build();
+        pAAdView.loadAd(pAAdRequest);
+
         rootLayout = findViewById(R.id.profiles_activity_rl);
         profilesActivityESLL = findViewById(R.id.pa_empty_state_linear_layout);
-
-        profilesDatabaseAdapter = new ProfilesDatabaseAdapter(this);
-        profilesDatabaseAdapter.open();
 
         nPFloatingActionButton = findViewById(R.id.new_profile_fab);
         nPFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startImagePickingProcedure();
+                if(rESPermissionIGranted()){
+                    startImagePickingProcedure();
+                }
+                else {
+                    requestRESPermission();
+                }
             }
         });
 
@@ -182,9 +205,65 @@ public class ProfilesActivity extends AppCompatActivity implements ProfileInterf
         getLatestVersion.execute();
     }
 
+    private void showAppropriateScreen(){
+        boolean thereIsAUserAcc = thereIsAUserAcc();
+        if (!thereIsAUserAcc) {
+            showOnboardingScrn();
+        }
+    }
+
+    private void showOnboardingScrn(){
+        Intent onboardingIntent = new Intent(ProfilesActivity.this, OnboardingActivity.class);
+        startActivity(onboardingIntent);
+        finish();
+    }
+
+    private boolean thereIsAUserAcc(){
+        final boolean[] thereIsAUserAcc = {false};
+        Runnable userAccntRunnable = new Runnable() {
+            @Override
+            public void run() {
+                thereIsAUserAcc[0] =  profilesDatabaseAdapter.thereIsAUserAccnt();
+            }
+        };
+        Thread userAccntThread = new Thread(userAccntRunnable);
+        userAccntThread.start();
+        try {
+            userAccntThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return thereIsAUserAcc[0];
+    }
+
+    private boolean rESPermissionIGranted() {
+        return ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void requestRESPermission() {
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                PERMISSIONS_REQUEST_R_E_S);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == PERMISSIONS_REQUEST_R_E_S) {
+            if(permissions.length > 0){
+                if (permissions[0].equalsIgnoreCase
+                        (Manifest.permission.READ_EXTERNAL_STORAGE)
+                        && grantResults[0] ==
+                        PackageManager.PERMISSION_GRANTED){
+                    startImagePickingProcedure();
+                }
+            }
+        }
+    }
+
 
     public void showEditCSnackBar(){
-        Snackbar.make(rootLayout, "Profile Updated", Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(rootLayout, getString(R.string.prfle_updtd), Snackbar.LENGTH_SHORT).show();
     }
 
     public void updateProfile(final int profileId, final String nProfileName, final int nProfileWeight, final int nProfileGender, final String nProfileBreed, final String nProfileDob, final int profilePosition) {
@@ -269,7 +348,7 @@ public class ProfilesActivity extends AppCompatActivity implements ProfileInterf
     }
 
     public void startImagePickingProcedure(){
-        Toast.makeText(getApplicationContext(),"Select a profile picture",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.slct_p_pic),Toast.LENGTH_SHORT).show();
         Intent imagePickingIntent = new Intent();
         imagePickingIntent.setType("image/*");
         if (Build.VERSION.SDK_INT <19){
@@ -277,7 +356,7 @@ public class ProfilesActivity extends AppCompatActivity implements ProfileInterf
         } else {
             imagePickingIntent.setAction(Intent.ACTION_OPEN_DOCUMENT);
         }
-        startActivityForResult(Intent.createChooser(imagePickingIntent, "Select Profile Picture"), PICK_IMAGE_REQUEST);
+        startActivityForResult(Intent.createChooser(imagePickingIntent, getString(R.string.slct_p_picc)), PICK_IMAGE_REQUEST);
     }
 
     private void updateProfilePicture(int selectedPosition1, final String imagePickerUriS){
@@ -302,7 +381,7 @@ public class ProfilesActivity extends AppCompatActivity implements ProfileInterf
         isEditingPPU = false;
         selectedPosition=0;
 
-        Snackbar.make(rootLayout, "Profile Picture Updated", Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(rootLayout, R.string.prfl_pc_pdtd, Snackbar.LENGTH_SHORT).show();
     }
 
     @Override
@@ -311,7 +390,7 @@ public class ProfilesActivity extends AppCompatActivity implements ProfileInterf
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
 
-            Toast.makeText(getApplicationContext(),"Profile picture selected",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.p_pic_slctd,Toast.LENGTH_SHORT).show();
 
             Uri imagePickerUri = data.getData();
 
@@ -502,9 +581,9 @@ public class ProfilesActivity extends AppCompatActivity implements ProfileInterf
     protected void shareApp(){
         Intent sAIntent = new Intent();
         sAIntent.setAction(Intent.ACTION_SEND);
-        sAIntent.putExtra(Intent.EXTRA_TEXT,"Pet Manager is a fast and simple app that enables me to store basic information about my pets for free. Get it at: https://play.google.com/store/apps/details?id="+getPackageName());
+        sAIntent.putExtra(Intent.EXTRA_TEXT,getString(R.string.prm_msg_txt)+getPackageName());
         sAIntent.setType("text/plain");
-        Intent.createChooser(sAIntent,"Share via");
+        Intent.createChooser(sAIntent,getString(R.string.sr_va));
         startActivity(sAIntent);
     }
 
@@ -543,7 +622,6 @@ public class ProfilesActivity extends AppCompatActivity implements ProfileInterf
 
                     }
                 });
-
                 deleteProfileDialogBuilder.setPositiveButton(getResources().getString(R.string.delete_profile_dialog_positive_button), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -594,7 +672,12 @@ public class ProfilesActivity extends AppCompatActivity implements ProfileInterf
                     int selectedPosition1 = pASelectedPositions.get(0);
                     isEditingPPU = true;
                     selectedPosition = selectedPosition1;
-                    startImagePickingProcedure();
+                    if(rESPermissionIGranted()){
+                        startImagePickingProcedure();
+                    }
+                    else {
+                        requestRESPermission();
+                    }
                 }
 
                 actionMode.finish();

@@ -50,6 +50,16 @@ public class ProfilesDatabaseAdapter {
                     COL_PROFILE_BREED + " TEXT, " +
                     COL_PROFILE_DOB + " TEXT );";
 
+    private static final String TABLE_USER = "tbl_usr";
+
+    private static final String COL_USER_ID = "_id";
+    private static final String COL_USER_NAME = "usr_nme";
+
+    private static final String CREATE_TABLE_USER =
+            "CREATE TABLE if not exists " + TABLE_USER + " ( " +
+                    COL_USER_ID + " INTEGER PRIMARY KEY autoincrement, " +
+                    COL_USER_NAME + " INTEGER );";
+
     protected ProfilesDatabaseAdapter(Context pDAContext) {
         this.pDAContext = pDAContext;
     }
@@ -138,6 +148,10 @@ public class ProfilesDatabaseAdapter {
 
                 profileList.add(profile);}
         }
+        if (profileTableCursor != null){
+            profileTableCursor.close();
+        }
+
         return profileList;
     }
 
@@ -176,6 +190,27 @@ public class ProfilesDatabaseAdapter {
         return currentDateTimeInMills;
     }
 
+    protected void createUser(int userName) {
+
+        ContentValues userValues = new ContentValues();
+
+        userValues.put(COL_USER_NAME, userName);
+
+        profilesDatabase.insert(TABLE_USER, null, userValues);
+    }
+
+    protected boolean thereIsAUserAccnt(){
+        Cursor usrLstCursor = profilesDatabase.query(TABLE_USER, new String[]{COL_USER_ID},
+                null, null, null, null, null
+        );
+        int count = usrLstCursor.getCount();
+        usrLstCursor.close();
+        return count > 0;
+    }
+
+
+
+
     private static class DatabaseHelper extends SQLiteOpenHelper {
         DatabaseHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -183,11 +218,13 @@ public class ProfilesDatabaseAdapter {
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL(CREATE_TABLE_PROFILE);
+            db.execSQL(CREATE_TABLE_USER);
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_PROFILE);
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
             onCreate(db);
         }
     }
