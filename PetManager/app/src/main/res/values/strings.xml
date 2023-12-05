@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Pet Manager</string>
+    <string name="new_profile">New Profile</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+
+    <string name="delete_profile_dialog_title">Delete Profile</string>
+    <string name="delete_profile_dialog_message">This action cannot be undone</string>
+    <string name="delete_profile_dialog_positive_button">Delete</string>
+    <string name="delete_profile_dialog_negative_button">Cancel</string>
+
+    <string name="teit_error_text">This field is mandatory</string>
+    <string name="no_profiles">No Profiles</string>
+    <string name="add_a_profile_and_it_will_appear_here">Add a profile and it will appear here</string>
+    <string name="edit_profile">Edit Profile</string>
+
+    <string name="help_activity_action_bar_title">Help</string>
+    <string name="send_feedback">Send Feedback</string>
+
+    <string name="update_app_informative_text">A new version is available</string>
+    <string name="update_app_button_text">UPDATE</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+
+
+
+</resources>
