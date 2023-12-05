@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Менеджер домашних животных</string>
+    <string name="edit">Редактировать</string>
+    <string name="delete">Удалить</string>
+
+    <string name="delete_profile_dialog_title">Удалить профиль</string>
+    <string name="delete_profile_dialog_message">Это действие не может быть отменено</string>
+    <string name="delete_profile_dialog_positive_button">Удалить</string>
+    <string name="delete_profile_dialog_negative_button">Отмена</string>
+
+    <string name="teit_error_text">Это поле обязательно для заполнения</string>
+    <string name="no_profiles">Нет профилей</string>
+    <string name="add_a_profile_and_it_will_appear_here">Добавьте профиль, и он появится здесь</string>
+    <string name="edit_profile">Редактировать профиль</string>
+
+    <string name="help_activity_action_bar_title">Справка</string>
+    <string name="send_feedback">Отправить отзыв</string>
+
+    <string name="update_app_informative_text">Доступна новая версия</string>
+    <string name="update_app_button_text">ОБНОВЛЯТЬ</string>
+    <string name="new_profile">Новый профиль</string>
+    <string name="save">СПАСАТЬ</string>
+    <string name="name_stng">Имя</string>
+
+    <string name="weight">Вес</string>
+    <string name="breed">Порода</string>
+    <string name="birth_day">День рождения</string>
+    <string name="help">Справка</string>
+    <string name="share_app">Поделиться приложением</string>
+
+    <string name="edit_profile_details">Редактирование сведений профиля</string>
+    <string name="edit_profile_picture">Редактирование изображения профиля</string>
+    <string name="fml">Женский</string>
+    <string name="yrs">Лет</string>
+    <string name="jan">Январь</string>
+
+    <string name="feb">Февраль</string>
+    <string name="mrch">Март</string>
+    <string name="aprl">Апрель</string>
+    <string name="my">Май</string>
+    <string name="jne">Июнь</string>
+
+    <string name="jly">Июль</string>
+    <string name="agst">Август</string>
+    <string name="sptmb">Сентябрь</string>
+    <string name="oct">Октябрь</string>
+    <string name="nov">Ноябрь</string>
+
+    <string name="dec">Декабрь</string>
+    <string name="mle">Мужской</string>
+    <string name="klgrms">Килограммов</string>
+    <string name="i_b_dte">Ввод даты рождения</string>
+    <string name="prfle_updtd">Профиль обновлен</string>
+
+    <string name="slct_p_pic">Выберите фотографию профиля питомца</string>
+    <string name="slct_p_picc">Выберите фотографию профиля питомца</string>
+    <string name="prfl_pc_pdtd">Обновлено изображение профиля</string>
+    <string name="p_pic_slctd">Выбрано изображение профиля</string>
+    <string name="prm_msg_txt">Менеджер домашних животных - это быстрое и простое приложение, которое позволяет мне хранить основную информацию о моих питомцах бесплатно. Получите его по адресу: https://play.google.com/store/apps/details?id=</string>
+    <string name="sr_va">Поделиться через</string>
+
+    <string name="speed_o_title">Быстрое сохранение данных о домашних животных</string>
+    <string name="speed_o_text">Храните информацию и быстро получайте доступ к ней</string>
+    <string name="safety_o_title">Сохраняйте свои данные надежно и безопасно</string>
+    <string name="safety_o_text">Ваш ввод безопасно хранится</string>
+    <string name="get_started">НАЧАТЬ</string>
+    <string name="gender">" "</string>
+
+
+</resources>

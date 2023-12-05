@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">宠物经理</string>
+    <string name="edit">编辑</string>
+    <string name="delete">删除</string>
+
+    <string name="delete_profile_dialog_title">删除配置文件</string>
+    <string name="delete_profile_dialog_message">此操作无法撤消</string>
+    <string name="delete_profile_dialog_positive_button">删除</string>
+    <string name="delete_profile_dialog_negative_button">取消</string>
+
+    <string name="teit_error_text">此字段是强制性的</string>
+    <string name="no_profiles">无配置文件</string>
+    <string name="add_a_profile_and_it_will_appear_here">添加配置文件，它会出现在这里</string>
+    <string name="edit_profile">编辑配置文件</string>
+
+    <string name="help_activity_action_bar_title">帮助</string>
+    <string name="send_feedback">发送反馈</string>
+
+    <string name="update_app_informative_text">提供新版本</string>
+    <string name="update_app_button_text">更新</string>
+    <string name="new_profile">新配置文件</string>
+    <string name="save">救</string>
+    <string name="name_stng">名字</string>
+
+    <string name="weight">重量</string>
+    <string name="breed">品种</string>
+    <string name="birth_day">出生日</string>
+    <string name="help">帮助</string>
+    <string name="share_app">共享应用</string>
+
+    <string name="edit_profile_details">编辑配置文件详细信息</string>
+    <string name="edit_profile_picture">编辑个人资料图片</string>
+    <string name="fml">女性</string>
+    <string name="yrs">年</string>
+    <string name="jan">一月</string>
+
+    <string name="feb">二月</string>
+    <string name="mrch">三月</string>
+    <string name="aprl">四月</string>
+    <string name="my">五月</string>
+    <string name="jne">六月</string>
+
+    <string name="jly">七月</string>
+    <string name="agst">八月</string>
+    <string name="sptmb">九月</string>
+    <string name="oct">十月</string>
+    <string name="nov">十一月</string>
+
+    <string name="dec">十二月</string>
+    <string name="mle">雄</string>
+    <string name="klgrms">公斤</string>
+    <string name="i_b_dte">输入出生日</string>
+    <string name="prfle_updtd">配置文件已更新</string>
+
+    <string name="slct_p_pic">选择个人资料图片</string>
+    <string name="slct_p_picc">选择配置文件图片</string>
+    <string name="prfl_pc_pdtd">配置文件图片已更新</string>
+    <string name="p_pic_slctd">配置文件图片已成功选择</string>
+    <string name="prm_msg_txt">宠物经理是一个快速和简单的应用程序，使我能够存储有关我的宠物的基本信息是免费的。获取它： https://play.google.com/store/apps/details?id=</string>
+    <string name="sr_va">共享通过</string>
+
+    <string name="speed_o_title">快速存储宠物数据</string>
+    <string name="speed_o_text">快速保存和访问信息</string>
+    <string name="safety_o_title">可靠、安全地保存您的数据</string>
+    <string name="safety_o_text">您的输入已安全存储</string>
+    <string name="get_started">开始吧</string>
+    <string name="gender">" "</string>
+
+
+</resources>
