@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gerente de Mascotas</string>
+    <string name="edit">Editar</string>
+    <string name="delete">Eliminar</string>
+
+    <string name="delete_profile_dialog_title">Eliminar perfil</string>
+    <string name="delete_profile_dialog_message">Esta acción no se puede deshacer</string>
+    <string name="delete_profile_dialog_positive_button">Eliminar</string>
+    <string name="delete_profile_dialog_negative_button">Cancelar</string>
+
+    <string name="teit_error_text">Este campo es obligatorio</string>
+    <string name="no_profiles">Sin perfiles</string>
+    <string name="add_a_profile_and_it_will_appear_here">Añade un perfil y aparecerá aquí</string>
+    <string name="edit_profile">Editar perfil</string>
+
+    <string name="help_activity_action_bar_title">Ayuda</string>
+    <string name="send_feedback">Enviar comentarios</string>
+
+    <string name="update_app_informative_text">Una nueva versión está disponible</string>
+    <string name="update_app_button_text">ACTUALIZAR</string>
+    <string name="new_profile">Nuevo perfil</string>
+    <string name="save">SALVAR</string>
+    <string name="name_stng">Nombre</string>
+
+    <string name="weight">Peso</string>
+    <string name="breed">Raza</string>
+    <string name="birth_day">Día de nacimiento</string>
+    <string name="help">Ayuda</string>
+    <string name="share_app">Compartir aplicación</string>
+
+    <string name="edit_profile_details">Editar detalles del perfil</string>
+    <string name="edit_profile_picture">Editar foto de perfil</string>
+    <string name="fml">Hembra</string>
+    <string name="yrs">Años</string>
+    <string name="jan">Enero</string>
+
+    <string name="feb">Febrero</string>
+    <string name="mrch">Marzo</string>
+    <string name="aprl">Abril</string>
+    <string name="my">Mayo</string>
+    <string name="jne">Junio</string>
+
+    <string name="jly">Julio</string>
+    <string name="agst">Agosto</string>
+    <string name="sptmb">Septiembre</string>
+    <string name="oct">Octubre</string>
+    <string name="nov">Noviembre</string>
+
+    <string name="dec">Diciembre</string>
+    <string name="mle">Masculino</string>
+    <string name="klgrms">Kilogramos</string>
+    <string name="i_b_dte">Ingrese BirthDate</string>
+    <string name="prfle_updtd">Perfil actualizado</string>
+
+    <string name="slct_p_pic">Selecciona una foto de perfil</string>
+    <string name="slct_p_picc">Seleccionar imagen de perfil</string>
+    <string name="prfl_pc_pdtd">Imagen de perfil actualizada</string>
+    <string name="p_pic_slctd">Foto de perfil seleccionada</string>
+    <string name="prm_msg_txt">La aplicación de gestión de mascotas es una aplicación rápida y simple que me permite almacenar información básica sobre mis mascotas de forma gratuita. Conséelo en: https://play.google.com/store/apps/details?id=</string>
+    <string name="sr_va">Compartir a través de</string>
+
+    <string name="speed_o_title">Almacene rápidamente datos de mascotas</string>
+    <string name="speed_o_text">Mantenga y acceda a la información rápidamente</string>
+    <string name="safety_o_title">Guarde sus datos de forma fiable y segura</string>
+    <string name="safety_o_text">Su entrada se almacena de forma segura</string>
+    <string name="get_started">EMPEZAR</string>
+    <string name="gender">" "</string>
+
+
+</resources>

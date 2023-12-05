@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">مدير الحيوانات الأليفة</string>
+    <string name="edit">حرر</string>
+    <string name="delete">حذف</string>
+
+    <string name="delete_profile_dialog_title">حذف ملف التعريف</string>
+    <string name="delete_profile_dialog_message">لا يمكن التراجع عن هذا الإجراء</string>
+    <string name="delete_profile_dialog_positive_button">حذف</string>
+    <string name="delete_profile_dialog_negative_button">إلغاء الأمر</string>
+
+    <string name="teit_error_text">هذا الحقل إلزامي</string>
+    <string name="no_profiles">لا توجد ملفات تعريف</string>
+    <string name="add_a_profile_and_it_will_appear_here">إضافة ملف تعريف وسيظهر هنا</string>
+    <string name="edit_profile">تحرير ملف التعريف</string>
+
+    <string name="help_activity_action_bar_title">تعليمات</string>
+    <string name="send_feedback">إرسال الآراء</string>
+
+    <string name="update_app_informative_text">يتوفر إصدار جديد</string>
+    <string name="update_app_button_text">تحديث</string>
+    <string name="new_profile">ملف تعريف جديد</string>
+    <string name="save">منجز</string>
+    <string name="name_stng">اسم</string>
+
+    <string name="weight">ثقل</string>
+    <string name="breed">ربى</string>
+    <string name="birth_day">عيد ميلاد</string>
+    <string name="help">تعليمات</string>
+    <string name="share_app">مشاركة التطبيق</string>
+
+    <string name="edit_profile_details">تحرير تفاصيل الملف الشخصي</string>
+    <string name="edit_profile_picture">تحرير صورة ملف التعريف</string>
+    <string name="fml">أنثى</string>
+    <string name="yrs">اعوام</string>
+    <string name="jan">يناير</string>
+
+    <string name="feb">فبراير</string>
+    <string name="mrch">مارس</string>
+    <string name="aprl">أبريل</string>
+    <string name="my">مايو</string>
+    <string name="jne">يونيو</string>
+
+    <string name="jly">يوليو</string>
+    <string name="agst">أغسطس</string>
+    <string name="sptmb">سبتمبر</string>
+    <string name="oct">أكتوبر</string>
+    <string name="nov">نوفمبر</string>
+
+    <string name="dec">ديسمبر</string>
+    <string name="mle">ذكر</string>
+    <string name="klgrms">الكيلوغرامات</string>
+    <string name="i_b_dte">أدخل تاريخ الميلاد</string>
+    <string name="prfle_updtd">تم تحديث ملف التعريف</string>
+
+    <string name="slct_p_pic">تحديد صورة ملف تعريف</string>
+    <string name="slct_p_picc">تحديد صورة ملف التعريف</string>
+    <string name="prfl_pc_pdtd">صورة ملف التعريف محدثة</string>
+    <string name="p_pic_slctd">صورة ملف التعريف المحددة</string>
+    <string name="prm_msg_txt">مدير الحيوانات الأليفة هو التطبيق السريع والبسيطة التي تمكنني من تخزين المعلومات الأساسية حول الحيوانات الأليفة بلدي مجانا. احصل عليه في: https://play.google.com/store/apps/details?id=</string>
+    <string name="sr_va">شارك عبر</string>
+
+    <string name="speed_o_title">تخزين بيانات الحيوانات الأليفة بسرعة</string>
+    <string name="speed_o_text">الاحتفاظ بالمعلومات والوصول إليها بسرعة</string>
+    <string name="safety_o_title">احفظ بياناتك بشكل موثوق وآمن</string>
+    <string name="safety_o_text">يتم تخزين المدخلات الخاصة بك بأمان</string>
+    <string name="get_started">البدء</string>
+    <string name="gender">" "</string>
+
+
+</resources>

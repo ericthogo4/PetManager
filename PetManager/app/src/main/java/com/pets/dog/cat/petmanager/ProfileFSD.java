@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+
+import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import androidx.fragment.app.DialogFragment;
@@ -36,15 +38,16 @@ import java.util.List;
  * Created by ERIC on 09/07/2020.
  */
 
-public class ProfileFSD extends DialogFragment implements AdapterView.OnItemSelectedListener, DatePickerDialog.OnDateSetListener {
+public class ProfileFSD extends DialogFragment implements DatePickerDialog.OnDateSetListener {
 
     private TextInputLayout newProfileNameTEIL;
     private TextInputLayout newProfileWeightTEIL;
     private TextInputLayout newProfileBreedTEIL;
     private TextInputEditText newProfileNameTEIET;
     private TextInputEditText newProfileWeightTEIET;
+    private MaterialAutoCompleteTextView genderSpinner;
+    private String[] genderArray;
     private TextInputEditText newProfileBreedTEIET;
-    private Spinner nPDGenderSpinner;
     private int gender = 0;
     private Button nPDSaveButton;
     private LinearLayout nPBirthdayLayout;
@@ -270,21 +273,7 @@ public class ProfileFSD extends DialogFragment implements AdapterView.OnItemSele
             }
         });
 
-
-        nPDGenderSpinner = rootView.findViewById(R.id.npd_gender_spinner);
-        nPDGenderSpinner.setOnItemSelectedListener(this);
-
         profileInterface = (ProfileInterface)getActivity();
-
-        List<String> genders = new ArrayList<String>();
-        genders.add("Male");
-        genders.add("Female");
-
-        ArrayAdapter<String> nPDGSAAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, genders);
-
-        nPDGSAAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        nPDGenderSpinner.setAdapter(nPDGSAAdapter);
 
         newProfileNameTEIL = rootView.findViewById(R.id.pname_til);
         newProfileWeightTEIL = rootView.findViewById(R.id.pweight_til);
@@ -292,9 +281,25 @@ public class ProfileFSD extends DialogFragment implements AdapterView.OnItemSele
 
         newProfileNameTEIET = rootView.findViewById(R.id.pname_tiet);
         newProfileWeightTEIET = rootView.findViewById(R.id.pweight_tiet);
+        genderSpinner = rootView.findViewById(R.id.gender_spinner);
         newProfileBreedTEIET = rootView.findViewById(R.id.pbreed_tiet);
-        ProfileTIETSuffixDrawable profileTIETSuffixDrawable = new ProfileTIETSuffixDrawable(getResources(),"Kgs", newProfileWeightTEIET);
+        ProfileTIETSuffixDrawable profileTIETSuffixDrawable = new ProfileTIETSuffixDrawable(getResources(),getString(R.string.klgrms), newProfileWeightTEIET);
         newProfileWeightTEIET.setCompoundDrawablesWithIntrinsicBounds(null, null, profileTIETSuffixDrawable, null);
+
+        genderSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                gender=position;
+            }
+        });
+
+
+        genderArray = new String[] {getString(R.string.mle), getString(R.string.fml)};
+        ArrayAdapter<String> genderSAdapter =
+                new ArrayAdapter<>(
+                        getActivity(),
+                        R.layout.gnder_spnnr_adptr_itm,
+                        genderArray);
 
         nPBirthdayLayout = rootView.findViewById(R.id.new_profile_birthday_layout);
         nPBLDateTvw = rootView.findViewById(R.id.npbl_date_value_tvw);
@@ -315,6 +320,9 @@ public class ProfileFSD extends DialogFragment implements AdapterView.OnItemSele
             setEditMode();
         }
 
+
+        genderSpinner.setAdapter(genderSAdapter);
+
         return rootView;
     }
 
@@ -326,7 +334,7 @@ public class ProfileFSD extends DialogFragment implements AdapterView.OnItemSele
     public void setEditMode(){
         newProfileNameTEIET.setText(name);
         newProfileWeightTEIET.setText(String.valueOf(weight));
-        nPDGenderSpinner.setSelection(gender);
+        genderSpinner.setText(genderArray[gender]);
         newProfileBreedTEIET.setText(breed);
         nPBLDateTvw.setText(dateOfBirth);
     }
@@ -387,7 +395,7 @@ public class ProfileFSD extends DialogFragment implements AdapterView.OnItemSele
 
         nPDatePickerDialog.setCanceledOnTouchOutside(true);
 
-        nPDatePickerDialog.setTitle("Input BirthDate");
+        nPDatePickerDialog.setTitle(getString(R.string.i_b_dte));
     }
 
     protected long getNowTIM(){
@@ -420,14 +428,6 @@ public class ProfileFSD extends DialogFragment implements AdapterView.OnItemSele
         Dialog profileFSDialog = super.onCreateDialog(savedInstanceState);
         profileFSDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         return profileFSDialog;
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        gender=position;
-    }
-
-    public void onNothingSelected(AdapterView<?> arg0) {
     }
 
     private void updateNPBTvw() {
